@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import { countriesReducer } from './reducers/countriesReducer.js';
-import './App.css';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme/theme.js';
+import { GlobalStyles } from './theme/global.js';
 
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
@@ -31,10 +33,15 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      jshfjkhfkjhk
-      <span>dgdgd</span>
-    </div>
+    <ThemeProvider theme={lightTheme}>
+      <>
+        <GlobalStyles />
+        <div className="App">
+          jshfjkhfkjhk
+          <span>dgdgd</span>
+        </div>
+      </>
+    </ThemeProvider>
   );
 }
 
