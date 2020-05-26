@@ -1,19 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer, useContext } from 'react';
+import { countriesReducer } from './reducers/countriesReducer.js';
 import './App.css';
 import axios from 'axios';
 
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
 
-  const [countries, setCountries] = useState([]);
+  const [countries, dispatchCountries] = useReducer(countriesReducer, {
+    data: [],
+    isLoading: false,
+    isError: false,
+  });
 
   useEffect(() => {
     const fetchCountries = async () => {
-      const response = await axios.get(URL);
-      console.log(response.data);
-      setCountries(response.data);
+      dispatchCountries({ type: 'FETCH_COUNTRIES_INIT' });
+      try {
+        const response = await axios.get(URL);
+        console.log(response.data);
+        dispatchCountries({
+          type: 'FETCH_COUNTRIES_SUCCESS',
+          payload: response.data,
+        });
+      } catch (error) {
+        console.log('Something dun goofed:', error);
+        dispatchCountries({ type: 'FETCH_COUNTRIES_ERROR' });
+      }
     };
-
     fetchCountries();
   }, []);
 
