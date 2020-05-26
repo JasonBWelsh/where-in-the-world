@@ -1,6 +1,6 @@
 export const lightTheme = {
   background: '#FAFAFA',
-  text: '#111517',
+  text: '#123',
   elements: '#fff',
   input: '#858585',
 };

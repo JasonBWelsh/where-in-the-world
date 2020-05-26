@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import { countriesReducer } from './reducers/countriesReducer.js';
 import axios from 'axios';
+// theme
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme/theme.js';
 import { GlobalStyles } from './theme/global.js';
+// AppBar
+import AppBar from './components/AppBar/AppBar.js';
 
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
@@ -13,6 +16,8 @@ function App() {
     isLoading: false,
     isError: false,
   });
+
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -32,11 +37,16 @@ function App() {
     fetchCountries();
   }, []);
 
+  const handleToggleTheme = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <div className="App">
+          <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
           jshfjkhfkjhk
           <span>dgdgd</span>
         </div>

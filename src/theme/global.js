@@ -18,9 +18,7 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    transition: all .3s linear;
   }
 
 `;
