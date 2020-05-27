@@ -9,7 +9,7 @@ export const darkTheme = {
   background: '#202C37',
   text: '#fff',
   elements: '#003A70',
-  input: '#858585', // not surw what color yet
+  input: '#FFF', // not surw what color yet
 };
 
 /*

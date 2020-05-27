@@ -20,6 +20,10 @@ export const StyledSearchForm = styled.form`
     background: ${({ theme }) => theme.elements};
     box-shadow: 0px 0px 2px 0px ${({ theme }) => theme.input};
     border-radius: 5px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
   }
 
   .search-icon__container {
@@ -30,11 +34,21 @@ export const StyledSearchForm = styled.form`
     align-items: center;
   }
 
+  .search-icon path,
+  .search-icon line {
+    stroke: ${({ theme }) => theme.input} !important;
+  }
+
   .search-input {
     flex: 1;
     height: 100%;
     border: none;
     padding: 0.5rem;
+    background: ${({ theme }) => theme.elements};
+
+    ::placeholder {
+      color: ${({ theme }) => theme.input};
+    }
 
     @media (min-width: 768px) {
       min-width: 300px;

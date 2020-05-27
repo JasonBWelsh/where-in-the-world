@@ -7,7 +7,7 @@ const SearchForm = function () {
     <StyledSearchForm>
       <div className="input-container">
         <div className="search-icon__container">
-          <SearchIcon height="20px" width="20px" />
+          <SearchIcon className="search-icon" height="20px" width="20px" />
         </div>
         <input
           type="text"
