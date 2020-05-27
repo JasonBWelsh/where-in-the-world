@@ -7,6 +7,9 @@ export const StyledAppBar = styled.header`
   justify-content: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   background: ${({ theme }) => theme.elements};
+  position: absolute;
+  top: 0;
+  z-index: 10;
 
   .header-container {
     flex: 1;

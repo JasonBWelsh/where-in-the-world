@@ -5,8 +5,12 @@ import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme/theme.js';
 import { GlobalStyles } from './theme/global.js';
+// context
+import CountriesContext from './context/CountriesContext.js';
 // AppBar
 import AppBar from './components/AppBar/AppBar.js';
+// Countries Page
+import CountriesPage from './components/CountriesPage/CountriesPage.js';
 
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
@@ -42,16 +46,17 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        <div className="App">
-          <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
-          jshfjkhfkjhk
-          <span>dgdgd</span>
-        </div>
-      </>
-    </ThemeProvider>
+    <CountriesContext.Provider value={countries.data}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <>
+          <GlobalStyles />
+          <div className="App">
+            <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
+            <CountriesPage />
+          </div>
+        </>
+      </ThemeProvider>
+    </CountriesContext.Provider>
   );
 }
 
