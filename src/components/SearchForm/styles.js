@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledSearchForm = styled.form`
-  border: 1px dashed tomato;
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
@@ -53,5 +52,15 @@ export const StyledSearchForm = styled.form`
     @media (min-width: 768px) {
       min-width: 300px;
     }
+  }
+
+  .filter-region__select {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px ${({ theme }) => theme.input};
+    width: 200px;
+    padding: 0.5rem;
+    background: ${({ theme }) => theme.elements};
+    color: ${({ theme }) => theme.input};
   }
 `;

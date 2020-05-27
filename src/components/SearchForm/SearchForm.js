@@ -17,7 +17,16 @@ const SearchForm = function () {
         />
       </div>
 
-      <select className="filter-region__select" />
+      <select className="filter-region__select">
+        <option disabled selected value="">
+          Filter by Region
+        </option>
+        <option value="africa">Africa</option>
+        <option value="america">America</option>
+        <option value="asia">Asia</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
+      </select>
     </StyledSearchForm>
   );
 };
