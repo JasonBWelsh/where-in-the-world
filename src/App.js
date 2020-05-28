@@ -51,7 +51,10 @@ function App() {
         <GlobalStyles />
         <div className="App">
           <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
-          <CountriesPage />
+          <CountriesPage
+            isLoading={countries.isLoading}
+            isError={countries.isError}
+          />
         </div>
       </ThemeProvider>
     </CountriesContext.Provider>

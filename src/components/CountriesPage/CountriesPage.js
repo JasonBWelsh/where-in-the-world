@@ -2,12 +2,13 @@ import React from 'react';
 import { StyledCountriesPage } from './styles.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 import CountriesList from '../CountriesList/CountriesList.js';
+import LoadingPage from '../LoadingPage/LoadingPage.js';
 
-function CountriesPage() {
+function CountriesPage({ isLoading, isError }) {
   return (
     <StyledCountriesPage>
       <SearchForm />
-      <CountriesList />
+      {isLoading ? <LoadingPage /> : <CountriesList />}
     </StyledCountriesPage>
   );
 }
