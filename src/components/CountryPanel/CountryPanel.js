@@ -5,19 +5,21 @@ const CountryPanel = function ({ country }) {
   const { flag, name, population, region, capital } = country;
   return (
     <StyledCountryPanel>
-      <h3 className="country-panel__header">{name}</h3>
-      <span className="country-panel__detail">
-        <strong>Population:</strong>
-        {population}
-      </span>
-      <span className="country-panel__detail">
-        <strong>Region:</strong>
-        {region}
-      </span>
-      <span className="country-panel__detail">
-        <strong>Capital:</strong>
-        {capital}
-      </span>
+      <div className="flag-container">
+        <img src={flag} className="country-flag" alt={`Flag of ${name}`} />
+      </div>
+      <div className="info-container">
+        <h3 className="country-panel__header">{name}</h3>
+        <span className="country-panel__detail">
+          <strong>Population:</strong> {population}
+        </span>
+        <span className="country-panel__detail">
+          <strong>Region:</strong> {region}
+        </span>
+        <span className="country-panel__detail">
+          <strong>Capital:</strong> {capital}
+        </span>
+      </div>
     </StyledCountryPanel>
   );
 };

@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyledCountriesList } from './styles.js';
 import CountryPanel from '../CountryPanel/CountryPanel.js';
+import CountriesContext from '../../context/CountriesContext.js';
 
 const CountriesList = function () {
+  const countries = useContext(CountriesContext);
+
   return (
     <StyledCountriesList>
-      <div>sfadfad</div>
+      {/* Temp log only 12 array items - TODO: remove */}
+      {countries.slice(0, 24).map((country) => (
+        <CountryPanel key={parseInt(country.numericCode)} country={country} />
+      ))}
     </StyledCountriesList>
   );
 };

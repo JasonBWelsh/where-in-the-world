@@ -48,13 +48,11 @@ function App() {
   return (
     <CountriesContext.Provider value={countries.data}>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        <>
-          <GlobalStyles />
-          <div className="App">
-            <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
-            <CountriesPage />
-          </div>
-        </>
+        <GlobalStyles />
+        <div className="App">
+          <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
+          <CountriesPage />
+        </div>
       </ThemeProvider>
     </CountriesContext.Provider>
   );
