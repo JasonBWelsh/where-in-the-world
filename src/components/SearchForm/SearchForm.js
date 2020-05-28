@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledSearchForm } from './styles.js';
 import { ReactComponent as SearchIcon } from '../../icons/search-outline.svg';
 
-const SearchForm = function () {
+function SearchForm({ searchTerm, handleSearchChange }) {
   return (
     <StyledSearchForm>
       <div className="input-container">
@@ -13,7 +13,8 @@ const SearchForm = function () {
           type="text"
           className="search-input"
           placeholder="Search for a country..."
-          value={''}
+          value={searchTerm}
+          onChange={handleSearchChange}
         />
       </div>
 
@@ -29,6 +30,6 @@ const SearchForm = function () {
       </select>
     </StyledSearchForm>
   );
-};
+}
 
 export default SearchForm;

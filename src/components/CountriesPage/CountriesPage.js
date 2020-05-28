@@ -5,10 +5,13 @@ import CountriesList from '../CountriesList/CountriesList.js';
 import LoadingPage from '../LoadingPage/LoadingPage.js';
 import ErrorPage from '../ErrorPage/ErrorPage.js';
 
-function CountriesPage({ isLoading, isError }) {
+function CountriesPage({ isLoading, isError, searchTerm, handleSearchChange }) {
   return (
     <StyledCountriesPage>
-      <SearchForm />
+      <SearchForm
+        searchTerm={searchTerm}
+        handleSearchChange={handleSearchChange}
+      />
       {isError && <ErrorPage />}
       {isLoading ? <LoadingPage /> : <CountriesList />}
     </StyledCountriesPage>

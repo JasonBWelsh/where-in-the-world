@@ -22,6 +22,7 @@ function App() {
   });
 
   const [theme, setTheme] = useState('light');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -45,8 +46,16 @@ function App() {
     theme === 'light' ? setTheme('dark') : setTheme('light');
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
-    <CountriesContext.Provider value={countries.data}>
+    <CountriesContext.Provider
+      value={countries.data.filter((country) =>
+        country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )}
+    >
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <div className="App">
@@ -54,6 +63,8 @@ function App() {
           <CountriesPage
             isLoading={countries.isLoading}
             isError={countries.isError}
+            searchTerm={searchTerm}
+            handleSearchChange={handleSearchChange}
           />
         </div>
       </ThemeProvider>
