@@ -2,7 +2,12 @@ import React from 'react';
 import { StyledSearchForm } from './styles.js';
 import { ReactComponent as SearchIcon } from '../../icons/search-outline.svg';
 
-function SearchForm({ searchTerm, handleSearchChange }) {
+function SearchForm({
+  searchTerm,
+  regionFilterValue,
+  handleSearchChange,
+  handleFilterChange,
+}) {
   return (
     <StyledSearchForm>
       <div className="input-container">
@@ -18,8 +23,12 @@ function SearchForm({ searchTerm, handleSearchChange }) {
         />
       </div>
 
-      <select className="filter-region__select">
-        <option disabled selected value="">
+      <select
+        className="filter-region__select"
+        value={regionFilterValue}
+        onChange={handleFilterChange}
+      >
+        <option disabled value="">
           Filter by Region
         </option>
         <option value="africa">Africa</option>
@@ -27,6 +36,7 @@ function SearchForm({ searchTerm, handleSearchChange }) {
         <option value="asia">Asia</option>
         <option value="europe">Europe</option>
         <option value="oceania">Oceania</option>
+        <option value={''}>No Filter</option>
       </select>
     </StyledSearchForm>
   );

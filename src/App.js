@@ -23,6 +23,7 @@ function App() {
 
   const [theme, setTheme] = useState('light');
   const [searchTerm, setSearchTerm] = useState('');
+  const [regionFilterValue, setRegionFilterValue] = useState('');
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -50,10 +51,17 @@ function App() {
     setSearchTerm(event.target.value);
   };
 
+  const handleFilterChange = (event) => {
+    console.log('DRD `handleFilterChange` log `event`:::', event.target.value);
+    setRegionFilterValue(event.target.value);
+  };
+
   return (
     <CountriesContext.Provider
-      value={countries.data.filter((country) =>
-        country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      value={countries.data.filter(
+        (country) =>
+          country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+          country.region.toLowerCase().includes(regionFilterValue)
       )}
     >
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -64,7 +72,9 @@ function App() {
             isLoading={countries.isLoading}
             isError={countries.isError}
             searchTerm={searchTerm}
+            regionFilterValue={regionFilterValue}
             handleSearchChange={handleSearchChange}
+            handleFilterChange={handleFilterChange}
           />
         </div>
       </ThemeProvider>
