@@ -9,7 +9,7 @@ const CountriesList = function () {
   return (
     <StyledCountriesList>
       {/* Temp log only 12 array items - TODO: remove */}
-      {countries.slice(0, 24).map((country) => (
+      {countries.map((country) => (
         <CountryPanel key={parseInt(country.numericCode)} country={country} />
       ))}
     </StyledCountriesList>

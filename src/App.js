@@ -25,6 +25,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [regionFilterValue, setRegionFilterValue] = useState('');
 
+  // Pagination related state (minus countries data)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage, setCountriesPerPage] = useState(15);
+
   useEffect(() => {
     const fetchCountries = async () => {
       dispatchCountries({ type: 'FETCH_COUNTRIES_INIT' });
@@ -56,9 +60,19 @@ function App() {
     setRegionFilterValue(event.target.value);
   };
 
+  // Pagination logic
+  //
+  // get current countries
+  const indexOfLastCountry = currentPage * countriesPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const currentCountries = countries.data.slice(
+    indexOfFirstCountry,
+    indexOfLastCountry
+  );
+
   return (
     <CountriesContext.Provider
-      value={countries.data.filter(
+      value={currentCountries.filter(
         (country) =>
           country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
           country.region.toLowerCase().includes(regionFilterValue)
