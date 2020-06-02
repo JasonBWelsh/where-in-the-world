@@ -8,7 +8,6 @@ const CountriesList = function () {
 
   return (
     <StyledCountriesList>
-      {/* Temp log only 12 array items - TODO: remove */}
       {countries.map((country) => (
         <CountryPanel key={parseInt(country.numericCode)} country={country} />
       ))}
