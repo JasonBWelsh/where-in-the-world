@@ -14,7 +14,7 @@ function Pagination() {
   }
   return (
     <StyledPagination>
-      <ul className="pagination">
+      <ul className="pagination-list">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <a

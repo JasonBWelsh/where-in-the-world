@@ -6,7 +6,7 @@ const initialState = {
   searchTerm: '',
   regionFilterValue: '',
   currentPage: 1,
-  countriesPerPage: 15,
+  countriesPerPage: 20,
 };
 
 export const rootReducer = function (state = initialState, action) {
