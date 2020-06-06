@@ -2,6 +2,11 @@ const initialState = {
   countries: [],
   isLoading: false,
   isError: false,
+  theme: 'light',
+  searchTerm: '',
+  regionFilterValue: '',
+  currentPage: 1,
+  countriesPerPage: 15,
 };
 
 export const rootReducer = function (state = initialState, action) {
@@ -25,6 +30,36 @@ export const rootReducer = function (state = initialState, action) {
         ...state,
         isLoading: false,
         isError: true,
+      };
+    case 'SET_THEME_LIGHT':
+      return {
+        ...state,
+        theme: 'light',
+      };
+    case 'SET_THEME_DARK':
+      return {
+        ...state,
+        theme: 'dark',
+      };
+    case 'SET_SEARCH_TERM':
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
+    case 'SET_REGION_FILTER_VALUE':
+      return {
+        ...state,
+        regionFilterValue: action.payload,
+      };
+    case 'SET_CURRENT_PAGE':
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case 'SET_COUNTRIES_PER_PAGE':
+      return {
+        ...state,
+        countriesPerPage: action.payload,
       };
     default:
       return state;

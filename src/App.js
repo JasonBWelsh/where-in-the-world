@@ -17,22 +17,15 @@ import CountriesPage from './components/CountriesPage/CountriesPage.js';
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
 
-  // const [countries, dispatchCountries] = useReducer(countriesReducer, {
-  //   data: [],
-  //   isLoading: false,
-  //   isError: false,
-  // });
-
   const dispatch = useDispatch();
+
   const countries = useSelector((state) => state.countries);
-
-  const [theme, setTheme] = useState('light');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [regionFilterValue, setRegionFilterValue] = useState('');
-
+  const theme = useSelector((state) => state.theme);
+  const searchTerm = useSelector((state) => state.searchTerm);
+  const regionFilterValue = useSelector((state) => state.regionFilterValue);
   // Pagination related state (minus countries data)
-  const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setCountriesPerPage] = useState(15);
+  const currentPage = useSelector((state) => state.currentPage);
+  const countriesPerPage = useSelector((state) => state.countriesPerPage);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -53,16 +46,17 @@ function App() {
   }, [dispatch]);
 
   const handleToggleTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+    theme === 'light'
+      ? dispatch({ type: 'SET_THEME_DARK' })
+      : dispatch({ type: 'SET_THEME_LIGHT' });
   };
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    dispatch({ type: 'SET_SEARCH_TERM', payload: event.target.value });
   };
 
   const handleFilterChange = (event) => {
-    console.log('DRD `handleFilterChange` log `event`:::', event.target.value);
-    setRegionFilterValue(event.target.value);
+    dispatch({ type: 'SET_REGION_FILTER_VALUE', payload: event.target.value });
   };
 
   // Pagination logic

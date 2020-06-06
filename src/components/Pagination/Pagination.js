@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyledPagination } from './styles.js';
+import { useSelector } from 'react-redux';
 
-function Pagination({ countriesPerPage, totalCountries }) {
+function Pagination() {
+  const countriesPerPage = useSelector((state) => state.countriesPerPage);
+  const totalCountries = useSelector((state) => state.countries.length);
   const pageNumbers = [];
 
   // calculate pageNumbers
