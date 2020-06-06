@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import { countriesReducer } from './reducers/countriesReducer.js';
 import axios from 'axios';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
 // theme
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme/theme.js';
@@ -15,11 +17,14 @@ import CountriesPage from './components/CountriesPage/CountriesPage.js';
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
 
-  const [countries, dispatchCountries] = useReducer(countriesReducer, {
-    data: [],
-    isLoading: false,
-    isError: false,
-  });
+  // const [countries, dispatchCountries] = useReducer(countriesReducer, {
+  //   data: [],
+  //   isLoading: false,
+  //   isError: false,
+  // });
+
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countries);
 
   const [theme, setTheme] = useState('light');
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,21 +36,21 @@ function App() {
 
   useEffect(() => {
     const fetchCountries = async () => {
-      dispatchCountries({ type: 'FETCH_COUNTRIES_INIT' });
+      dispatch({ type: 'FETCH_COUNTRIES_INIT' });
       try {
         const response = await axios.get(URL);
         console.log(response.data);
-        dispatchCountries({
+        dispatch({
           type: 'FETCH_COUNTRIES_SUCCESS',
           payload: response.data,
         });
       } catch (error) {
         console.log('Something dun goofed:', error);
-        dispatchCountries({ type: 'FETCH_COUNTRIES_ERROR' });
+        dispatch({ type: 'FETCH_COUNTRIES_ERROR' });
       }
     };
     fetchCountries();
-  }, []);
+  }, [dispatch]);
 
   const handleToggleTheme = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
@@ -65,7 +70,7 @@ function App() {
   // get current countries
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = countries.data.slice(
+  const currentCountries = countries.slice(
     indexOfFirstCountry,
     indexOfLastCountry
   );
