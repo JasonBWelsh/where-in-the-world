@@ -6,6 +6,7 @@ function Pagination() {
   const dispatch = useDispatch();
   const countriesPerPage = useSelector((state) => state.countriesPerPage);
   const totalCountries = useSelector((state) => state.countries.length);
+  const currentPage = useSelector((state) => state.currentPage);
   const pageNumbers = [];
 
   // calculate pageNumbers
@@ -19,7 +20,7 @@ function Pagination() {
           <li key={number} className="page-item">
             <a
               href="!#"
-              className="page-link"
+              className={`page-link ${number === currentPage && 'selected'}`}
               onClick={() =>
                 dispatch({ type: 'SET_CURRENT_PAGE', payload: number })
               }
