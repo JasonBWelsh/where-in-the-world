@@ -86,7 +86,7 @@ function App() {
           <div className="App">
             <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
             <Switch>
-              <Route path="/">
+              <Route exact path={['/', '/!#']}>
                 <CountriesPage
                   isLoading={countries.isLoading}
                   isError={countries.isError}
@@ -95,6 +95,9 @@ function App() {
                   handleSearchChange={handleSearchChange}
                   handleFilterChange={handleFilterChange}
                 />
+              </Route>
+              <Route path="/country-details">
+                <CountryDetails />
               </Route>
             </Switch>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledPagination } from './styles.js';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Pagination() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function Pagination() {
       <ul className="pagination-list">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a
+            <Link
               href="!#"
               className={`page-link ${number === currentPage && 'selected'}`}
               onClick={() =>
@@ -26,7 +27,7 @@ function Pagination() {
               }
             >
               {number}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
