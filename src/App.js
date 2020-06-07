@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import { countriesReducer } from './reducers/countriesReducer.js';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 // theme
@@ -13,6 +14,8 @@ import CountriesContext from './context/CountriesContext.js';
 import AppBar from './components/AppBar/AppBar.js';
 // Countries Page
 import CountriesPage from './components/CountriesPage/CountriesPage.js';
+// CountryDetails Page
+import CountryDetails from './components/CountryDetails/CountryDetails.js';
 
 function App() {
   const URL = 'https://restcountries.eu/rest/v2/all';
@@ -70,28 +73,34 @@ function App() {
   );
 
   return (
-    <CountriesContext.Provider
-      value={currentCountries.filter(
-        (country) =>
-          country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          country.region.toLowerCase().includes(regionFilterValue)
-      )}
-    >
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        <GlobalStyles />
-        <div className="App">
-          <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
-          <CountriesPage
-            isLoading={countries.isLoading}
-            isError={countries.isError}
-            searchTerm={searchTerm}
-            regionFilterValue={regionFilterValue}
-            handleSearchChange={handleSearchChange}
-            handleFilterChange={handleFilterChange}
-          />
-        </div>
-      </ThemeProvider>
-    </CountriesContext.Provider>
+    <Router>
+      <CountriesContext.Provider /* TODO: Find solution to pass this from store and not use Context */
+        value={currentCountries.filter(
+          (country) =>
+            country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            country.region.toLowerCase().includes(regionFilterValue)
+        )}
+      >
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles />
+          <div className="App">
+            <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
+            <Switch>
+              <Route path="/">
+                <CountriesPage
+                  isLoading={countries.isLoading}
+                  isError={countries.isError}
+                  searchTerm={searchTerm}
+                  regionFilterValue={regionFilterValue}
+                  handleSearchChange={handleSearchChange}
+                  handleFilterChange={handleFilterChange}
+                />
+              </Route>
+            </Switch>
+          </div>
+        </ThemeProvider>
+      </CountriesContext.Provider>
+    </Router>
   );
 }
 

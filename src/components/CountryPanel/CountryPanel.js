@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyledCountryPanel } from './styles.js';
+import { Link } from 'react-router-dom';
 
 const CountryPanel = function ({ country }) {
   const { flag, name, population, region, capital } = country;
@@ -20,6 +21,9 @@ const CountryPanel = function ({ country }) {
           <strong>Capital:</strong> {capital}
         </span>
       </div>
+      <Link to="/country-details" className="country-details__button">
+        Details
+      </Link>
     </StyledCountryPanel>
   );
 };

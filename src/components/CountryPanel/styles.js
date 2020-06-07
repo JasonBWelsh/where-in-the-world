@@ -28,4 +28,8 @@ export const StyledCountryPanel = styled.div`
       font-size: 14px;
     }
   }
+
+  .country-details__button {
+    padding: 0.5rem;
+  }
 `;
