@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyledCountryDetails } from './styles.js';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
 
 function CountryDetails() {
-  const location = useLocation();
-  console.log('DRD `CountryDetails` log `location`:::', location);
-  const { data } = location;
-  console.log('DRD `CountryDetails` log `data`:::', data);
+  const [selectedCountry, setSelectedCountry] = useState();
+  useEffect(() => {
+    const item = localStorage.getItem('selectedCountry');
+    setSelectedCountry(item);
+  }, []);
+
+  if (selectedCountry) {
+    const country = JSON.parse(selectedCountry);
+    console.log('DRD inside `CountryDetails` log `country`:::', country);
+  }
+
   return (
     <StyledCountryDetails>
       <h2>CountryDetails</h2>

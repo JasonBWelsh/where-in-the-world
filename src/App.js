@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useReducer, useContext } from 'react';
-import { countriesReducer } from './reducers/countriesReducer.js';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // redux

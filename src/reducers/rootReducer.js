@@ -7,6 +7,7 @@ const initialState = {
   regionFilterValue: '',
   currentPage: 1,
   countriesPerPage: 20,
+  selectedCountry: {}, // used for loading data into CountryDetails page
 };
 
 export const rootReducer = function (state = initialState, action) {
@@ -60,6 +61,11 @@ export const rootReducer = function (state = initialState, action) {
       return {
         ...state,
         countriesPerPage: action.payload,
+      };
+    case 'SET_SELECTED_COUNTRY':
+      return {
+        ...state,
+        selectedCountry: action.payload,
       };
     default:
       return state;

@@ -1,9 +1,17 @@
 import React from 'react';
 import { StyledCountryPanel } from './styles.js';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const CountryPanel = function ({ country }) {
   const { flag, name, population, region, capital } = country;
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    console.log('DRD `CountryPanel` handleClick');
+    dispatch({ type: 'SET_SELECTED_COUNTRY', payload: country });
+    localStorage.setItem('selectedCountry', JSON.stringify(country));
+  };
   return (
     <StyledCountryPanel>
       <div className="flag-container">
@@ -22,11 +30,9 @@ const CountryPanel = function ({ country }) {
         </span>
       </div>
       <Link
-        to={{
-          pathname: '/country-details',
-          data: country,
-        }}
+        to="/country-details"
         className="country-details__button"
+        onClick={handleClick}
       >
         Details
       </Link>
