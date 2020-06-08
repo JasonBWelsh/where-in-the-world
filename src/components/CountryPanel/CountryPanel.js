@@ -21,7 +21,13 @@ const CountryPanel = function ({ country }) {
           <strong>Capital:</strong> {capital}
         </span>
       </div>
-      <Link to="/country-details" className="country-details__button">
+      <Link
+        to={{
+          pathname: '/country-details',
+          data: country,
+        }}
+        className="country-details__button"
+      >
         Details
       </Link>
     </StyledCountryPanel>

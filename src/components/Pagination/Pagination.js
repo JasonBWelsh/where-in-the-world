@@ -20,7 +20,7 @@ function Pagination() {
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <Link
-              href="!#"
+              to="!"
               className={`page-link ${number === currentPage && 'selected'}`}
               onClick={() =>
                 dispatch({ type: 'SET_CURRENT_PAGE', payload: number })

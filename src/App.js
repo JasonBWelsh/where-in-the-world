@@ -86,7 +86,7 @@ function App() {
           <div className="App">
             <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
             <Switch>
-              <Route exact path={['/', '/!#']}>
+              <Route exact path={['/', '/!']}>
                 <CountriesPage
                   isLoading={countries.isLoading}
                   isError={countries.isError}
