@@ -41,7 +41,7 @@ function CountryDetails() {
           <div className="data-container">
             <h2 className="country-heading">{selectedCountry.name}</h2>
             <div className="list-column__container">
-              <article className="info-block-one">
+              <article className="info-block info-block-one">
                 <ul className="country-details-list">
                   <li>
                     <strong>Native name: </strong>
@@ -65,7 +65,7 @@ function CountryDetails() {
                   </li>
                 </ul>
               </article>
-              <article className="info-block-two">
+              <article className="info-block info-block-two">
                 <ul className="country-details-list">
                   <li>
                     <strong>Top Level Domain: </strong>
@@ -88,7 +88,7 @@ function CountryDetails() {
                 </ul>
               </article>
             </div>
-            <article className="border-countries-block">
+            <article className="info-block border-countries-block">
               <h3 className="border-contries__heading">Border Countries:</h3>
               <ul className="country-details-list border-countries-list">
                 {selectedCountry.borders.map((border) => (

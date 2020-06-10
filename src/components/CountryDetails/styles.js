@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledCountryDetails = styled.main`
-  padding: 52px 1rem 0;
+  padding: 52px 1rem 3rem;
   display: flex;
   flex-direction: column;
 
@@ -40,14 +40,57 @@ export const StyledCountryDetails = styled.main`
 
     @media (min-width: 768px) {
       flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  /* Flag container */
+  .flag-container {
+    @media (min-width: 768px) {
+      flex-basis: 45%;
+    }
+
+    .flag {
+      width: 100%;
     }
   }
 
   /* Data container */
   .data-container {
-  }
+    @media (min-width: 768px) {
+      flex-basis: 45%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
 
-  .flag {
-    width: 100%;
+    .list-column__container {
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .info-block {
+      margin-bottom: 2rem;
+    }
+
+    .country-details-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .border-countries__heading {
+      font-size: 1rem;
+    }
+    .border-countries-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 `;
