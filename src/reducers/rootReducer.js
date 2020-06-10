@@ -6,7 +6,7 @@ const initialState = {
   searchTerm: '',
   regionFilterValue: '',
   currentPage: 1,
-  countriesPerPage: 20,
+  countriesPerPage: 33,
   selectedCountry: {}, // used for loading data into CountryDetails page
 };
 

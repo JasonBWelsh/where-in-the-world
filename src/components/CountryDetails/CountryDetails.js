@@ -46,7 +46,7 @@ function CountryDetails() {
         <nav className="country-details__nav">
           <Link to="/" className="nav-link">
             <BackArrow className="back-arrow" />
-            Back
+            Home
           </Link>
         </nav>
 

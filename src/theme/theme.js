@@ -3,8 +3,9 @@ export const lightTheme = {
   text: '#123',
   elements: '#fff',
   input: '#858585',
-  paginateBg: '#dedede',
-  paginateSelectedLinkBg: '#1c518a',
+  paginateBg: '#121212',
+  paginateText: '#fff',
+  paginateSelectedLinkBg: '#3232ae',
   paginateSelectedLinkText: '#fff',
   paginateLinkHoverText: '#1c518a',
 };
@@ -15,6 +16,7 @@ export const darkTheme = {
   elements: '#003A70',
   input: '#FFF', // not surw what color yet
   paginateBg: '#323232',
+  paginateText: '#fff',
   paginateSelectedLinkBg: '#301934',
   paginateSelectedLinkText: '#fff',
   paginateLinkHoverText: '#301934',
