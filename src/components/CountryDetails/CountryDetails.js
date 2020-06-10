@@ -28,6 +28,14 @@ function CountryDetails() {
     }
   };
 
+  const handleBorderCouontriesClick = (name) => {
+    const targetCountry = countries.filter(
+      (country) => country.name === name
+    )[0];
+
+    setSelectedCountry(targetCountry);
+  };
+
   if (isLoading || !selectedCountry) {
     return <ErrorPage />;
   }
@@ -112,7 +120,12 @@ function CountryDetails() {
                   );
                   return (
                     <li key={border}>
-                      <button className="border-country__button">
+                      <button
+                        className="border-country__button"
+                        onClick={() =>
+                          handleBorderCouontriesClick(fullBorderCountryName)
+                        }
+                      >
                         {fullBorderCountryName}
                       </button>
                     </li>
