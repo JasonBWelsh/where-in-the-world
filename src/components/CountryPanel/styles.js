@@ -30,6 +30,17 @@ export const StyledCountryPanel = styled.div`
   }
 
   .country-details__button {
+    margin: 0 0 0.3rem 0.3rem;
     padding: 0.5rem;
+    background: ${({ theme }) => theme.elements};
+    color: ${({ theme }) => theme.text};
+    text-decoration: none;
+    border: 1px solid ${({ theme }) => theme.text};
+    width: 80px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 `;
