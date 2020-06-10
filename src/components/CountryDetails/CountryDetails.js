@@ -71,12 +71,14 @@ function CountryDetails() {
                     <strong>Top Level Domain: </strong>
                     {selectedCountry.topLevelDomain[0]}
                   </li>
-                  {selectedCountry.currencies.map((currency) => (
-                    <li key={currency.code}>
-                      <strong>Currencies: </strong>
-                      {`${currency.name} ${currency.symbol}, `}
-                    </li>
-                  ))}
+                  <li>
+                    <strong>Currencies: </strong>
+                    {selectedCountry.currencies.map((currency) => (
+                      <span
+                        key={currency.code}
+                      >{`${currency.name} ${currency.symbol},`}</span>
+                    ))}
+                  </li>
                   <li>
                     <strong>Languages: </strong>
                     {selectedCountry.languages.map((language) => (
@@ -89,10 +91,12 @@ function CountryDetails() {
               </article>
             </div>
             <article className="info-block border-countries-block">
-              <h3 className="border-contries__heading">Border Countries:</h3>
+              <h3 className="border-countries__heading">Border Countries:</h3>
               <ul className="country-details-list border-countries-list">
                 {selectedCountry.borders.map((border) => (
-                  <li key={border}>{border}</li>
+                  <li key={border}>
+                    <button className="border-country__button">{border}</button>
+                  </li>
                 ))}
               </ul>
             </article>

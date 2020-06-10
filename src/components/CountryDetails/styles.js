@@ -8,7 +8,7 @@ export const StyledCountryDetails = styled.main`
   .country-details__nav {
     padding: 3rem 0;
     @media (min-width: 768px) {
-      padding: 5rem 0;
+      padding: 3rem 0;
     }
 
     .nav-link {
@@ -34,7 +34,6 @@ export const StyledCountryDetails = styled.main`
   }
 
   .country-info__container {
-    border: 1px dashed grey;
     display: flex;
     flex-direction: column;
 
@@ -47,7 +46,7 @@ export const StyledCountryDetails = styled.main`
   /* Flag container */
   .flag-container {
     @media (min-width: 768px) {
-      flex-basis: 45%;
+      flex-basis: 43%;
     }
 
     .flag {
@@ -58,7 +57,7 @@ export const StyledCountryDetails = styled.main`
   /* Data container */
   .data-container {
     @media (min-width: 768px) {
-      flex-basis: 45%;
+      flex-basis: 50%;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -67,12 +66,18 @@ export const StyledCountryDetails = styled.main`
     .list-column__container {
       @media (min-width: 768px) {
         display: flex;
-        justify-content: space-between;
+        /* justify-content: space-between; */
       }
     }
 
     .info-block {
       margin-bottom: 2rem;
+    }
+
+    .info-block-one {
+      @media (min-width: 768px) {
+        margin-right: 3rem;
+      }
     }
 
     .country-details-list {
@@ -85,12 +90,39 @@ export const StyledCountryDetails = styled.main`
       }
     }
 
+    /* Border countries block */
+
+    .border-countries-block {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+    }
+
     .border-countries__heading {
       font-size: 1rem;
+
+      @media (min-width: 768px) {
+        margin-right: 2rem;
+      }
     }
+
     .border-countries-list {
       display: flex;
       flex-wrap: wrap;
+
+      .border-country__button {
+        margin: 0.5rem;
+        border: 1px solid ${({ theme }) => theme.text};
+        padding: 0.5rem 1rem;
+        background: ${({ theme }) => theme.elements};
+        color: ${({ theme }) => theme.text};
+        cursor: pointer;
+      }
     }
   }
 `;
