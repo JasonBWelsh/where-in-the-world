@@ -3,10 +3,12 @@ import { StyledCountryDetails } from './styles.js';
 import { Link } from 'react-router-dom';
 import ErrorPage from '../ErrorPage/ErrorPage.js';
 import { ReactComponent as BackArrow } from '../../icons/arrow-back-outline.svg';
+import { useSelector } from 'react-redux';
 
 function CountryDetails() {
   const [selectedCountry, setSelectedCountry] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const countries = useSelector((state) => state.countries);
 
   useEffect(() => {
     setIsLoading(true);
@@ -14,6 +16,17 @@ function CountryDetails() {
     setSelectedCountry(JSON.parse(item));
     setIsLoading(false);
   }, []);
+
+  const getFullBorderCountryName = (borderCountry) => {
+    const countryMatch = countries.filter(
+      (country) => country.alpha3Code === borderCountry
+    )[0];
+
+    if (countryMatch && countryMatch.hasOwnProperty('name')) {
+      const fullName = countryMatch.name;
+      return fullName;
+    }
+  };
 
   if (isLoading || !selectedCountry) {
     return <ErrorPage />;
@@ -93,11 +106,18 @@ function CountryDetails() {
             <article className="info-block border-countries-block">
               <h3 className="border-countries__heading">Border Countries:</h3>
               <ul className="country-details-list border-countries-list">
-                {selectedCountry.borders.map((border) => (
-                  <li key={border}>
-                    <button className="border-country__button">{border}</button>
-                  </li>
-                ))}
+                {selectedCountry.borders.map((border) => {
+                  const fullBorderCountryName = getFullBorderCountryName(
+                    border
+                  );
+                  return (
+                    <li key={border}>
+                      <button className="border-country__button">
+                        {fullBorderCountryName}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </article>
           </div>
