@@ -37,7 +37,66 @@ function CountryDetails() {
               alt={`flag of ${selectedCountry.name}`}
             />
           </div>
-          <div className="data-container">data container</div>
+
+          <div className="data-container">
+            <h2 className="country-heading">{selectedCountry.name}</h2>
+            <div className="list-column__container">
+              <article className="info-block-one">
+                <ul className="country-details-list">
+                  <li>
+                    <strong>Native name: </strong>
+                    {selectedCountry.nativeName}
+                  </li>
+                  <li>
+                    <strong>Population: </strong>
+                    {selectedCountry.population}
+                  </li>
+                  <li>
+                    <strong>Region: </strong>
+                    {selectedCountry.region}
+                  </li>
+                  <li>
+                    <strong>Sub Region: </strong>
+                    {selectedCountry.subregion}
+                  </li>
+                  <li>
+                    <strong>Capital: </strong>
+                    {selectedCountry.capital}
+                  </li>
+                </ul>
+              </article>
+              <article className="info-block-two">
+                <ul className="country-details-list">
+                  <li>
+                    <strong>Top Level Domain: </strong>
+                    {selectedCountry.topLevelDomain[0]}
+                  </li>
+                  {selectedCountry.currencies.map((currency) => (
+                    <li key={currency.code}>
+                      <strong>Currencies: </strong>
+                      {`${currency.name} ${currency.symbol}, `}
+                    </li>
+                  ))}
+                  <li>
+                    <strong>Languages: </strong>
+                    {selectedCountry.languages.map((language) => (
+                      <span
+                        key={language.iso639_1}
+                      >{`${language.name}, `}</span>
+                    ))}
+                  </li>
+                </ul>
+              </article>
+            </div>
+            <article className="border-countries-block">
+              <h3 className="border-contries__heading">Border Countries:</h3>
+              <ul className="country-details-list border-countries-list">
+                {selectedCountry.borders.map((border) => (
+                  <li key={border}>{border}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
         </section>
       </StyledCountryDetails>
     );

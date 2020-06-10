@@ -33,6 +33,20 @@ export const StyledCountryDetails = styled.main`
     }
   }
 
+  .country-info__container {
+    border: 1px dashed grey;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  /* Data container */
+  .data-container {
+  }
+
   .flag {
     width: 100%;
   }
