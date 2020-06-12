@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 // theme
@@ -20,8 +20,6 @@ function App() {
   const dispatch = useDispatch();
 
   const theme = useSelector((state) => state.theme);
-  const searchTerm = useSelector((state) => state.searchTerm);
-  const regionFilterValue = useSelector((state) => state.regionFilterValue);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -64,8 +62,6 @@ function App() {
           <Switch>
             <Route exact path={['/', '/!']}>
               <CountriesPage
-                searchTerm={searchTerm}
-                regionFilterValue={regionFilterValue}
                 handleSearchChange={handleSearchChange}
                 handleFilterChange={handleFilterChange}
               />

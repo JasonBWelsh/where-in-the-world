@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyledSearchForm } from './styles.js';
 import { ReactComponent as SearchIcon } from '../../icons/search-outline.svg';
+import { useSelector } from 'react-redux';
 
-function SearchForm({
-  searchTerm,
-  regionFilterValue,
-  handleSearchChange,
-  handleFilterChange,
-}) {
+function SearchForm({ handleSearchChange, handleFilterChange }) {
+  const searchTerm = useSelector((state) => state.searchTerm);
+  const regionFilterValue = useSelector((state) => state.regionFilterValue);
+
   return (
     <StyledSearchForm>
       <div className="input-container">

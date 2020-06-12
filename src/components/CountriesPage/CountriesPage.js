@@ -18,8 +18,6 @@ function CountriesPage({
   return (
     <StyledCountriesPage>
       <SearchForm
-        searchTerm={searchTerm}
-        regionFilterValue={regionFilterValue}
         handleSearchChange={handleSearchChange}
         handleFilterChange={handleFilterChange}
       />
