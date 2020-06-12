@@ -8,7 +8,6 @@ const CountryPanel = function ({ country }) {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log('DRD `CountryPanel` handleClick');
     dispatch({ type: 'SET_SELECTED_COUNTRY', payload: country });
     localStorage.setItem('selectedCountry', JSON.stringify(country));
   };
