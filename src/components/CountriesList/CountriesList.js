@@ -21,10 +21,13 @@ const CountriesList = function () {
   ) => {
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentCountries = countries.slice(
-      indexOfFirstCountry,
-      indexOfLastCountry
-    );
+    const currentCountries = countries
+      .filter(
+        (country) =>
+          country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+          country.region.toLowerCase().includes(regionFilterValue)
+      )
+      .slice(indexOfFirstCountry, indexOfLastCountry);
 
     return currentCountries;
   };
@@ -33,10 +36,6 @@ const CountriesList = function () {
     countries,
     currentPage,
     countriesPerPage
-  ).filter(
-    (country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      country.region.toLowerCase().includes(regionFilterValue)
   );
 
   return (
