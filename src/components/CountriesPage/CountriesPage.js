@@ -6,12 +6,7 @@ import CountriesList from '../CountriesList/CountriesList.js';
 import LoadingPage from '../LoadingPage/LoadingPage.js';
 import ErrorPage from '../ErrorPage/ErrorPage.js';
 
-function CountriesPage({
-  searchTerm,
-  handleSearchChange,
-  handleFilterChange,
-  regionFilterValue,
-}) {
+function CountriesPage({ handleSearchChange, handleFilterChange }) {
   const isLoading = useSelector((state) => state.isLoading);
   const isError = useSelector((state) => state.isError);
 

@@ -52,13 +52,3 @@ const CountriesList = function () {
 };
 
 export default CountriesList;
-
-/*
-<CountriesContext.Provider TODO: Find solution to pass this from store and not use Context 
-value={currentCountries.filter(
-  (country) =>
-    country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    country.region.toLowerCase().includes(regionFilterValue)
-)}
->
-*/
