@@ -7,8 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme/theme.js';
 import { GlobalStyles } from './theme/global.js';
-// context
-import CountriesContext from './context/CountriesContext.js';
 // AppBar
 import AppBar from './components/AppBar/AppBar.js';
 // Countries Page
@@ -21,13 +19,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const countries = useSelector((state) => state.countries);
   const theme = useSelector((state) => state.theme);
   const searchTerm = useSelector((state) => state.searchTerm);
   const regionFilterValue = useSelector((state) => state.regionFilterValue);
-  // Pagination related state (minus countries data)
-  const currentPage = useSelector((state) => state.currentPage);
-  const countriesPerPage = useSelector((state) => state.countriesPerPage);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -38,10 +32,6 @@ function App() {
         dispatch({
           type: 'FETCH_COUNTRIES_SUCCESS',
           payload: response.data,
-        });
-        dispatch({
-          type: 'SET_CURRENT_COUNTRIES',
-          payload: handleGetCurrentCountries(currentPage, countriesPerPage),
         });
       } catch (error) {
         console.log('Something dun goofed:', error);
@@ -65,49 +55,27 @@ function App() {
     dispatch({ type: 'SET_REGION_FILTER_VALUE', payload: event.target.value });
   };
 
-  // Pagination logic
-  //
-  // get current countries
-  const handleGetCurrentCountries = (currentPage, countriesPerPage) => {
-    const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentCountries = countries.slice(
-      indexOfFirstCountry,
-      indexOfLastCountry
-    );
-
-    return currentCountries;
-  };
-
   return (
     <Router>
-      <CountriesContext.Provider /* TODO: Find solution to pass this from store and not use Context */
-        value={handleGetCurrentCountries(currentPage, countriesPerPage).filter(
-          (country) =>
-            country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            country.region.toLowerCase().includes(regionFilterValue)
-        )}
-      >
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <GlobalStyles />
-          <div className="App">
-            <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
-            <Switch>
-              <Route exact path={['/', '/!']}>
-                <CountriesPage
-                  searchTerm={searchTerm}
-                  regionFilterValue={regionFilterValue}
-                  handleSearchChange={handleSearchChange}
-                  handleFilterChange={handleFilterChange}
-                />
-              </Route>
-              <Route path="/country-details">
-                <CountryDetails />
-              </Route>
-            </Switch>
-          </div>
-        </ThemeProvider>
-      </CountriesContext.Provider>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <div className="App">
+          <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
+          <Switch>
+            <Route exact path={['/', '/!']}>
+              <CountriesPage
+                searchTerm={searchTerm}
+                regionFilterValue={regionFilterValue}
+                handleSearchChange={handleSearchChange}
+                handleFilterChange={handleFilterChange}
+              />
+            </Route>
+            <Route path="/country-details">
+              <CountryDetails />
+            </Route>
+          </Switch>
+        </div>
+      </ThemeProvider>
     </Router>
   );
 }
