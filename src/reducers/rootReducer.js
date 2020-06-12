@@ -8,6 +8,7 @@ const initialState = {
   currentPage: 1,
   countriesPerPage: 33,
   selectedCountry: {}, // used for loading data into CountryDetails page
+  currentCountries: [],
 };
 
 export const rootReducer = function (state = initialState, action) {
@@ -65,6 +66,11 @@ export const rootReducer = function (state = initialState, action) {
       return {
         ...state,
         selectedCountry: action.payload,
+      };
+    case 'SET_CURRENT_COUNTRIES':
+      return {
+        ...state,
+        currentCountries: action.payload,
       };
     default:
       return state;

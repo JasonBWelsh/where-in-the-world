@@ -39,6 +39,10 @@ function App() {
           type: 'FETCH_COUNTRIES_SUCCESS',
           payload: response.data,
         });
+        dispatch({
+          type: 'SET_CURRENT_COUNTRIES',
+          payload: handleGetCurrentCountries(currentPage, countriesPerPage),
+        });
       } catch (error) {
         console.log('Something dun goofed:', error);
         dispatch({ type: 'FETCH_COUNTRIES_ERROR' });
@@ -64,17 +68,21 @@ function App() {
   // Pagination logic
   //
   // get current countries
-  const indexOfLastCountry = currentPage * countriesPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = countries.slice(
-    indexOfFirstCountry,
-    indexOfLastCountry
-  );
+  const handleGetCurrentCountries = (currentPage, countriesPerPage) => {
+    const indexOfLastCountry = currentPage * countriesPerPage;
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    const currentCountries = countries.slice(
+      indexOfFirstCountry,
+      indexOfLastCountry
+    );
+
+    return currentCountries;
+  };
 
   return (
     <Router>
       <CountriesContext.Provider /* TODO: Find solution to pass this from store and not use Context */
-        value={currentCountries.filter(
+        value={handleGetCurrentCountries(currentPage, countriesPerPage).filter(
           (country) =>
             country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
             country.region.toLowerCase().includes(regionFilterValue)
@@ -87,8 +95,6 @@ function App() {
             <Switch>
               <Route exact path={['/', '/!']}>
                 <CountriesPage
-                  isLoading={countries.isLoading}
-                  isError={countries.isError}
                   searchTerm={searchTerm}
                   regionFilterValue={regionFilterValue}
                   handleSearchChange={handleSearchChange}
