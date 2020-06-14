@@ -35,12 +35,13 @@ export const StyledCountryPanel = styled.div`
     background: ${({ theme }) => theme.elements};
     color: ${({ theme }) => theme.text};
     text-decoration: none;
-    border: 1px solid ${({ theme }) => theme.text};
+    border: 1px solid ${({ theme }) => theme.input};
     width: 80px;
     transition: all 0.3s ease;
 
     &:hover {
-      transform: translateY(-3px);
+      background: ${({ theme }) => theme.input};
+      color: ${({ theme }) => theme.elements};
     }
   }
 `;
