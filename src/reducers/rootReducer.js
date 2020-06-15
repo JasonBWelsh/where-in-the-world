@@ -5,6 +5,7 @@ const initialState = {
   theme: 'light',
   searchTerm: '',
   regionFilterValue: '',
+  sortValue: '',
   currentPage: 1,
   countriesPerPage: 33,
   selectedCountry: {}, // used for loading data into CountryDetails page
@@ -71,6 +72,11 @@ export const rootReducer = function (state = initialState, action) {
       return {
         ...state,
         currentCountries: action.payload,
+      };
+    case 'SET_SORT_VALUE':
+      return {
+        ...state,
+        sortValue: action.payload,
       };
     default:
       return state;

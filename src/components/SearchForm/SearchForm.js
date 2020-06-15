@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyledSearchForm } from './styles.js';
 import { ReactComponent as SearchIcon } from '../../icons/search-outline.svg';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function SearchForm({ handleSearchChange, handleFilterChange }) {
+  const dispatch = useDispatch();
+
   const searchTerm = useSelector((state) => state.searchTerm);
   const regionFilterValue = useSelector((state) => state.regionFilterValue);
+  const sortValue = useSelector((state) => state.sortValue);
+
+  const handleSortCountriesChange = (event) => {
+    dispatch({ type: 'SET_SORT_VALUE', payload: event.target.value });
+  };
 
   return (
     <StyledSearchForm>
@@ -21,6 +28,18 @@ function SearchForm({ handleSearchChange, handleFilterChange }) {
           onChange={handleSearchChange}
         />
       </div>
+
+      <select
+        className="sort-countries__select"
+        value={sortValue}
+        onChange={handleSortCountriesChange}
+      >
+        <option disabled value="">
+          Sort by...
+        </option>
+        <option value="drd">DRD</option>
+        <option value="">None</option>
+      </select>
 
       <select
         className="filter-region__select"
