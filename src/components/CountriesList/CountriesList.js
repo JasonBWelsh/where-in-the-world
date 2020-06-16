@@ -16,10 +16,38 @@ const CountriesList = function () {
   function getSortedCountries(countries, sortValue) {
     switch (sortValue) {
       case 'population_highest': {
-        return sortBy(countries, (o) => o.population).reverse();
+        return sortBy(countries, (country) => country.population).reverse();
       }
       case 'population_lowest': {
-        return sortBy(countries, (o) => o.population);
+        return sortBy(countries, (country) => country.population);
+      }
+      case 'most_languages': {
+        return countries
+          .sort((a, b) => a.languages.length - b.languages.length)
+          .reverse();
+      }
+      case 'least_languages': {
+        return countries.sort(
+          (a, b) => a.languages.length - b.languages.length
+        );
+      }
+      case 'most_border_countries': {
+        return countries
+          .sort((a, b) => a.borders.length - b.borders.length)
+          .reverse();
+      }
+      case 'least_border_countries': {
+        return countries.sort((a, b) => a.borders.length - b.borders.length);
+      }
+      case 'most_currencies': {
+        return countries
+          .sort((a, b) => a.currencies.length - b.currencies.length)
+          .reverse();
+      }
+      case 'least_currencies': {
+        return countries.sort(
+          (a, b) => a.currencies.length - b.currencies.length
+        );
       }
       default:
         return countries;

@@ -39,6 +39,12 @@ function SearchForm({ handleSearchChange, handleFilterChange }) {
         </option>
         <option value="population_highest">Highest Population</option>
         <option value="population_lowest">Lowest Population</option>
+        <option value="most_languages">Most Languages</option>
+        <option value="least_languages">Least Languages</option>
+        <option value="most_border_countries">Most Border Countries</option>
+        <option value="least_border_countries">Least Border Countries</option>
+        <option value="most_currencies">Most Currencies</option>
+        <option value="least_currencies">Least Currencies</option>
         <option value="">None</option>
       </select>
 
