@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyledCountriesList } from './styles.js';
 import { useSelector } from 'react-redux';
 import CountryPanel from '../CountryPanel/CountryPanel.js';
