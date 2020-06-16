@@ -54,7 +54,8 @@ export const StyledSearchForm = styled.form`
     }
   }
 
-  .filter-region__select {
+  .filter-region__select,
+  .sort-countries__select {
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 0px ${({ theme }) => theme.input};
@@ -62,5 +63,15 @@ export const StyledSearchForm = styled.form`
     padding: 0.5rem;
     background: ${({ theme }) => theme.elements};
     color: ${({ theme }) => theme.input};
+  }
+
+  .sort-countries__select {
+    margin-bottom: 10px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+      margin-left: auto;
+      margin-right: 10px;
+    }
   }
 `;

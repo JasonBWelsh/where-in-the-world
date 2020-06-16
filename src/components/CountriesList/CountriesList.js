@@ -49,6 +49,9 @@ const CountriesList = function () {
           (a, b) => a.currencies.length - b.currencies.length
         );
       }
+      case 'no_sort': {
+        return countries;
+      }
       default:
         return countries;
     }
