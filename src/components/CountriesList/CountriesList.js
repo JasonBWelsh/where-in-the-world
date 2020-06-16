@@ -3,6 +3,7 @@ import { StyledCountriesList } from './styles.js';
 import { useSelector } from 'react-redux';
 import CountryPanel from '../CountryPanel/CountryPanel.js';
 import Pagination from '../Pagination/Pagination.js';
+import { sortBy } from 'lodash';
 
 const CountriesList = function () {
   const countries = useSelector((state) => state.countries);
@@ -10,18 +11,34 @@ const CountriesList = function () {
   const countriesPerPage = useSelector((state) => state.countriesPerPage);
   const searchTerm = useSelector((state) => state.searchTerm);
   const regionFilterValue = useSelector((state) => state.regionFilterValue);
+  const sortValue = useSelector((state) => state.sortValue);
+
+  function getSortedCountries(countries, sortValue) {
+    switch (sortValue) {
+      case 'population_highest': {
+        return sortBy(countries, (o) => o.population).reverse();
+      }
+      case 'population_lowest': {
+        return sortBy(countries, (o) => o.population);
+      }
+      default:
+        return countries;
+    }
+  }
+
+  const sortedCountries = getSortedCountries(countries, sortValue);
 
   // Pagination logic
   //
   // get current countries
   const handleGetCurrentCountries = (
-    countries,
+    sortedCountries,
     currentPage,
     countriesPerPage
   ) => {
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentCountries = countries
+    const currentCountries = sortedCountries
       .filter(
         (country) =>
           country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -33,7 +50,7 @@ const CountriesList = function () {
   };
 
   const currentCountries = handleGetCurrentCountries(
-    countries,
+    sortedCountries,
     currentPage,
     countriesPerPage
   );
