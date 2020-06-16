@@ -8,6 +8,7 @@ export const lightTheme = {
   paginateSelectedLinkBg: '#3232ae',
   paginateSelectedLinkText: '#fff',
   paginateLinkHoverText: '#1c518a',
+  flagBorder: '#cdcdcd',
 };
 
 export const darkTheme = {
@@ -20,6 +21,7 @@ export const darkTheme = {
   paginateSelectedLinkBg: '#301934',
   paginateSelectedLinkText: '#fff',
   paginateLinkHoverText: '#301934',
+  flagBorder: '#202C37',
 };
 
 /*
