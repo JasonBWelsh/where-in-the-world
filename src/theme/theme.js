@@ -14,7 +14,8 @@ export const lightTheme = {
 export const darkTheme = {
   background: '#202C37',
   text: '#fff',
-  elements: '#003A70',
+  // elements: '#003A70',
+  elements: '#323254',
   input: '#FFF', // not surw what color yet
   paginateBg: '#323232',
   paginateText: '#fff',
