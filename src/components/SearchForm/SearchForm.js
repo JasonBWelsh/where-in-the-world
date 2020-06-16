@@ -37,7 +37,8 @@ function SearchForm({ handleSearchChange, handleFilterChange }) {
         <option disabled value="">
           Sort by...
         </option>
-        <option value="drd">DRD</option>
+        <option value="population_highest">Highest Population</option>
+        <option value="population_lowest">Lowest Population</option>
         <option value="">None</option>
       </select>
 
