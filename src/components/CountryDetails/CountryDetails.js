@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ErrorPage from '../ErrorPage/ErrorPage.js';
 import { ReactComponent as BackArrow } from '../../icons/arrow-back-outline.svg';
 import { useSelector } from 'react-redux';
+import { formatPopulation } from '../../utils/utilities';
 
 function CountryDetails() {
   const [selectedCountry, setSelectedCountry] = useState();
@@ -70,7 +71,7 @@ function CountryDetails() {
                   </li>
                   <li>
                     <strong>Population: </strong>
-                    {selectedCountry.population}
+                    {formatPopulation(selectedCountry.population)}
                   </li>
                   <li>
                     <strong>Region: </strong>

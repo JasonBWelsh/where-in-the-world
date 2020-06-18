@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledCountryPanel } from './styles.js';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { formatPopulation } from '../../utils/utilities';
 
 const CountryPanel = function ({ country }) {
   const { flag, name, population, region, capital } = country;
@@ -19,7 +20,7 @@ const CountryPanel = function ({ country }) {
       <div className="info-container">
         <h3 className="country-panel__header">{name}</h3>
         <span className="country-panel__detail">
-          <strong>Population:</strong> {population}
+          <strong>Population:</strong> {formatPopulation(population)}
         </span>
         <span className="country-panel__detail">
           <strong>Region:</strong> {region}
