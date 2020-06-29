@@ -37,17 +37,15 @@ const CountriesList = function () {
         return sortBy(countries, (country) => country.borders.length);
       }
       case 'most_currencies': {
-        return countries
-          .sort((a, b) => a.currencies.length - b.currencies.length)
-          .reverse();
+        return sortBy(
+          countries,
+          (country) => country.currencies.length
+        ).reverse();
       }
       case 'least_currencies': {
-        return countries.sort(
-          (a, b) => a.currencies.length - b.currencies.length
-        );
+        return sortBy(countries, (country) => country.currencies.length);
       }
       case 'no_sort': {
-        console.log('DRD1 `CountriesList` `no_sort` case', countries);
         return countries;
       }
       default:
