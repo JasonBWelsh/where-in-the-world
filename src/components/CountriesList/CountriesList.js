@@ -31,12 +31,10 @@ const CountriesList = function () {
         return sortBy(countries, (country) => country.languages.length);
       }
       case 'most_border_countries': {
-        return countries
-          .sort((a, b) => a.borders.length - b.borders.length)
-          .reverse();
+        return sortBy(countries, (country) => country.borders.length).reverse();
       }
       case 'least_border_countries': {
-        return countries.sort((a, b) => a.borders.length - b.borders.length);
+        return sortBy(countries, (country) => country.borders.length);
       }
       case 'most_currencies': {
         return countries
