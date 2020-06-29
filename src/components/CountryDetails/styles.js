@@ -72,6 +72,7 @@ export const StyledCountryDetails = styled.main`
 
     .info-block {
       margin-bottom: 2rem;
+      flex: 1;
     }
 
     .info-block-one {

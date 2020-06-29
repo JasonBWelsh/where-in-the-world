@@ -45,7 +45,7 @@ function SearchForm({ handleSearchChange, handleFilterChange }) {
         <option value="least_border_countries">Least Border Countries</option>
         <option value="most_currencies">Most Currencies</option>
         <option value="least_currencies">Least Currencies</option>
-        <option value="no_sort">None</option>
+        <option value="no_sort">No Sort</option>
       </select>
 
       <select
