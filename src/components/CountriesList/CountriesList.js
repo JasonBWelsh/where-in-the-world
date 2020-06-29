@@ -22,14 +22,13 @@ const CountriesList = function () {
         return sortBy(countries, (country) => country.population);
       }
       case 'most_languages': {
-        return countries
-          .sort((a, b) => a.languages.length - b.languages.length)
-          .reverse();
+        return sortBy(
+          countries,
+          (country) => country.languages.length
+        ).reverse();
       }
       case 'least_languages': {
-        return countries.sort(
-          (a, b) => a.languages.length - b.languages.length
-        );
+        return sortBy(countries, (country) => country.languages.length);
       }
       case 'most_border_countries': {
         return countries
@@ -50,6 +49,7 @@ const CountriesList = function () {
         );
       }
       case 'no_sort': {
+        console.log('DRD1 `CountriesList` `no_sort` case', countries);
         return countries;
       }
       default:
