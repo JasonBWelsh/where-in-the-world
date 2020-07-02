@@ -127,6 +127,9 @@ function CountryDetails() {
             <article className="info-block border-countries-block">
               <h3 className="border-countries__heading">Border Countries:</h3>
               <ul className="country-details-list border-countries-list">
+                {selectedCountry.borders.length === 0 && (
+                  <li style={{ margin: 0 }}>{'None'}</li>
+                )}
                 {selectedCountry.borders.map((border) => {
                   const fullBorderCountryName = getFullBorderCountryName(
                     border
