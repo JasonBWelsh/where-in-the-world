@@ -66,7 +66,6 @@ export const StyledCountryDetails = styled.main`
     .list-column__container {
       @media (min-width: 768px) {
         display: flex;
-        /* justify-content: space-between; */
       }
     }
 

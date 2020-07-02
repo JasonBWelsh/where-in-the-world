@@ -95,19 +95,31 @@ function CountryDetails() {
                   </li>
                   <li>
                     <strong>Currencies: </strong>
-                    {selectedCountry.currencies.map((currency) => (
-                      <span
-                        key={currency.code}
-                      >{`${currency.name} ${currency.symbol},`}</span>
-                    ))}
+                    {selectedCountry.currencies.map((currency, index) => {
+                      if (index === selectedCountry.currencies.length - 1)
+                        return (
+                          <span key={currency.code}>{`${currency.name}`}</span>
+                        );
+                      return (
+                        <span key={currency.code}>{`${currency.name}, `}</span>
+                      );
+                    })}
                   </li>
                   <li>
                     <strong>Languages: </strong>
-                    {selectedCountry.languages.map((language) => (
-                      <span
-                        key={language.iso639_1}
-                      >{`${language.name}, `}</span>
-                    ))}
+                    {selectedCountry.languages.map((language, index) => {
+                      if (index === selectedCountry.languages.length - 1)
+                        return (
+                          <span
+                            key={language.iso639_1}
+                          >{`${language.name}`}</span>
+                        );
+                      return (
+                        <span
+                          key={language.iso639_1}
+                        >{`${language.name}, `}</span>
+                      );
+                    })}
                   </li>
                 </ul>
               </article>

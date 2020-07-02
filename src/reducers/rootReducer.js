@@ -7,7 +7,7 @@ const initialState = {
   regionFilterValue: '',
   sortValue: '',
   currentPage: 1,
-  countriesPerPage: 33,
+  countriesPerPage: 36,
   selectedCountry: {}, // used for loading data into CountryDetails page
   currentCountries: [],
 };
