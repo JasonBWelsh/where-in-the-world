@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/where-in-the-world/static/css/main.d498bfb3.chunk.css",
+    "main.js": "/where-in-the-world/static/js/main.29154bd9.chunk.js",
+    "main.js.map": "/where-in-the-world/static/js/main.29154bd9.chunk.js.map",
+    "runtime-main.js": "/where-in-the-world/static/js/runtime-main.85417e13.js",
+    "runtime-main.js.map": "/where-in-the-world/static/js/runtime-main.85417e13.js.map",
+    "static/js/2.fa32acfb.chunk.js": "/where-in-the-world/static/js/2.fa32acfb.chunk.js",
+    "static/js/2.fa32acfb.chunk.js.map": "/where-in-the-world/static/js/2.fa32acfb.chunk.js.map",
+    "index.html": "/where-in-the-world/index.html",
+    "precache-manifest.d39bbeaceb5fe8fd0d86d042362f629f.js": "/where-in-the-world/precache-manifest.d39bbeaceb5fe8fd0d86d042362f629f.js",
+    "service-worker.js": "/where-in-the-world/service-worker.js",
+    "static/css/main.d498bfb3.chunk.css.map": "/where-in-the-world/static/css/main.d498bfb3.chunk.css.map",
+    "static/js/2.fa32acfb.chunk.js.LICENSE.txt": "/where-in-the-world/static/js/2.fa32acfb.chunk.js.LICENSE.txt",
+    "static/media/arrow-back-outline.26d49415.svg": "/where-in-the-world/static/media/arrow-back-outline.26d49415.svg",
+    "static/media/moon-outline.cc4a13b3.svg": "/where-in-the-world/static/media/moon-outline.cc4a13b3.svg",
+    "static/media/search-outline.20bf4119.svg": "/where-in-the-world/static/media/search-outline.20bf4119.svg",
+    "static/media/sunny-outline.448436c5.svg": "/where-in-the-world/static/media/sunny-outline.448436c5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.85417e13.js",
+    "static/js/2.fa32acfb.chunk.js",
+    "static/css/main.d498bfb3.chunk.css",
+    "static/js/main.29154bd9.chunk.js"
+  ]
+}
