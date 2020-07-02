@@ -60,7 +60,7 @@ function App() {
         <div className="App">
           <AppBar theme={theme} handleToggleTheme={handleToggleTheme} />
           <Switch>
-            <Route exact path={['/', '/!']}>
+            <Route exact path={['/', '/!', 'where-in-the-world']}>
               <CountriesPage
                 handleSearchChange={handleSearchChange}
                 handleFilterChange={handleFilterChange}
